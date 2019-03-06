@@ -20,7 +20,18 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
   },
 });
-
+const divStyle = {
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    background: '#eec3f7',
+    position: 'relative',
+    boxSizing: 'borderBox',
+    left: '-2%',
+    top: '-5%',
+    margin: '0px 0px 0px 0px',
+    padding: '0px 0px 0px 0px',
+};
 class Test extends Component {
   
     state = {
@@ -53,8 +64,9 @@ class Test extends Component {
             onMouseOut={this.toggleRaised} 
             raised={this.state.raised}>
           
-
-          <img src={People} alt="" /> 
+          <div style={divStyle}>
+            <img style={{padding: '10px'}} src={People} alt="" /> 
+          </div>
           <h2>346</h2>
           <p>Total Payouts </p>
           
@@ -66,8 +78,18 @@ class Test extends Component {
             onMouseOut={this.toggleRaised2}
             raised={this.state.raised2}>
 
-         
-          <img src={Purse} alt=""/>
+          <div style={{ width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: '#d4a9f9',
+                        position: 'relative',
+                        boxSizing: 'borderBox',
+                        left: '-2%',
+                        top: '-5%',
+                        margin: '0px 0px 0px 0px',
+                        padding: '0px 0px 0px 0px',}}> 
+             <img style={{padding: '12px'}} src={Purse} alt=""/>
+          </div>   
           <h2>346</h2>
           <p>Total Payouts Completed </p>
           
@@ -80,8 +102,18 @@ class Test extends Component {
             onMouseOut={this.toggleRaised3}
             raised={this.state.raised3} >
 
-          
-          <img src={Wrench} alt=""/>
+          <div style={{width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: '#f9d495',
+                        position: 'relative',
+                        boxSizing: 'borderBox',
+                        left: '-2%',
+                        top: '-5%',
+                        margin: '0px 0px 0px 0px',
+                        padding: '0px 0px 0px 0px',}}>
+            <img style={{padding: '10px'}} src={Wrench} alt=""/>
+          </div>
           <h2>346</h2>
           <p>Pending Service Requests </p>
           
@@ -93,8 +125,18 @@ class Test extends Component {
               onMouseOver={this.toggleRaised4}
             onMouseOut={this.toggleRaised4}
             raised={this.state.raised4}>
-
-          <img src={Shape} alt=""/> 
+          <div style={{width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: '#f79ba6',
+                        position: 'relative',
+                        boxSizing: 'borderBox',
+                        left: '-2%',
+                        top: '-5%',
+                        margin: '0px 0px 0px 0px',
+                        padding: '0px 0px 0px 0px',}}>
+            <img style={{padding: '12px'}} src={Shape} alt=""/>
+          </div> 
           <h2>346</h2>
           <p>Finance Rejections </p>
           
@@ -106,8 +148,18 @@ class Test extends Component {
               onMouseOver={this.toggleRaised5}
             onMouseOut={this.toggleRaised5}
             raised={this.state.raised5} >
-
-          <img src={Under} alt=""/> 
+          <div style={{width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: '#abccf2',
+                        position: 'relative',
+                        boxSizing: 'borderBox',
+                        left: '-2%',
+                        top: '-5%',
+                        margin: '0px 0px 0px 0px',
+                        padding: '0px 0px 0px 0px',}}>          
+            <img style={{padding: '10px 10px 10px 14px'}} src={Under} alt=""/>
+          </div> 
           <h2>346</h2>
           <p>Total Amount Payable </p>
           
@@ -119,8 +171,18 @@ class Test extends Component {
               onMouseOver={this.toggleRaised6}
             onMouseOut={this.toggleRaised6}
             raised={this.state.raised6}>
-
-          <img src={Path} alt=""/>
+          <div style={{width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: '#cbefa2',
+                        position: 'relative',
+                        boxSizing: 'borderBox',
+                        left: '-2%',
+                        top: '-5%',
+                        margin: '0px 0px 0px 0px',
+                        padding: '0px 0px 0px 0px',}}>
+            <img style={{padding: '12px 10px'}} src={Path} alt=""/>
+          </div>  
           <h2>346</h2>
           Total Amount Paid 
           
