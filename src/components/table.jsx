@@ -222,7 +222,7 @@ export default class Demo extends React.PureComponent {
             leftColumns={leftColumns}
             rightColumns={rightColumns}
           />
-        
+              
         </Grid>
       </Paper>
     );
