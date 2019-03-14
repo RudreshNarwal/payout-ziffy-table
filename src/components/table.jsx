@@ -18,6 +18,11 @@ import {
   TableColumnReordering,
 } from '@devexpress/dx-react-grid-material-ui';
 import { Steps, Button, message } from 'antd';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const Step = Steps.Step;
 const steps = [{
@@ -53,6 +58,9 @@ export default class Demo extends React.PureComponent {
     this.state = {
       current: 0, 
       status: [],
+      open: false,
+      open2: false,
+
       columns: [
         { name: 'Property_Detail', title: 'Property Detail' },
         { name: 'Modal', title: 'Modal' },
@@ -123,6 +131,19 @@ export default class Demo extends React.PureComponent {
     
   // }
 
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+  handleClickOpen2 = () => {
+    this.setState({ open2: true });
+  };
+  handleClose = () => {
+    this.setState({ open: false });
+  }; 
+  handleClose2 = () => {
+    this.setState({ open2: false });
+  }; 
+
   render() {
     const {
       rows, columns, tableColumnExtensions,
@@ -148,18 +169,153 @@ export default class Demo extends React.PureComponent {
                     current === 1
                     && (
                     <div style={{display : 'inline-block'}}> 
-                      <Button type="primary" onClick={() => { this.next(); 
-                          message.success('Processing complete!');
-                          this.setState({
-                              current: 2
-                              })}}> Mark Paid</Button>
-                      <Button type="primary" style={{margin: '0px 0px 0px 10px'}} onClick={() => { 
-                          message.success('Rejected');
-                          this.setState({
-                              status: 'error',
-                              })}}> 
-                          Reject</Button> 
-                      </div>
+                      <Button type="primary" 
+                         onClick={this.handleClickOpen}
+                        // onClick={() => { this.next(); 
+                        //   message.success('Processing complete!');
+                        //   this.setState({
+                        //       current: 2
+                        //       })}}
+                              >
+                       Mark Paid
+                    </Button>
+                            
+                        <Dialog
+                            open={this.state.open}
+                            onClose={this.handleClose}
+                            aria-labelledby="form-dialog-title"
+                            // fullWidth= 'true'
+                            // maxWidth = 'sm'
+                          >
+                            <DialogTitle id="form-dialog-title">
+                              Mark Transaction as Paid
+                            </DialogTitle>
+                            <DialogContent>
+                              <div style={{ display: "flex" }}>
+                                <div
+                                  style={{
+                                    color: "#4a4a4a",
+                                    fontSize: "10px",
+                                    fontFamily: "roboto",
+                                    top: "100px"
+                                  }}
+                                ><br/>
+                                  Payable Amount
+                                  <br />
+                                  <span style={{ color: "#7ed321", fontSize: "18px" }}>
+                                    Rs. 1,20,134
+                                  </span>
+                                </div>
+                                <div style={{margin: '0px 15px 0px 35px'}}> 
+                                  <TextField
+                                    id="outlined-with-placeholder"
+                                    label="Amount Paid"
+                                    margin="dense"
+                                    variant="outlined"
+                                  />
+                                </div>
+                                <div>
+                                  <TextField
+                                    id="date"
+                                    label="Date of Payment"
+                                    margin="dense"
+                                    type="date"
+                                    defaultValue=""
+                                    variant="outlined"
+                                    InputLabelProps={{
+                                      shrink: true,
+                                    }}
+                                  />
+                                </div> 
+                              </div>
+                              <div>
+                                <TextField
+                                  // autoFocus
+                                  id="comment"
+                                  label="Transaction ID"
+                                  multiline
+                                  margin="dense"
+                                  variant="outlined"
+                                  fullWidth
+                                />
+                            </div>
+                            </DialogContent>
+                            <DialogActions>
+                              <Button onClick={this.handleClose} type="danger" color="primary">
+                                Cancel
+                              </Button>
+                              <Button onClick={() => {
+                                this.setState({ 
+                                  open: false,
+                                  current: 2
+                                 });
+                                this.next(); 
+                                message.success('Processing complete!');
+                              }} 
+                              type="primary"
+                              >
+                                Mark Paid
+                              </Button>
+                            </DialogActions>
+                          </Dialog> 
+
+                      <Button type="primary" style={{margin: '0px 0px 0px 10px'}} 
+                          onClick={this.handleClickOpen2}
+
+                          //  onClick={() => { 
+                          // message.success('Rejected');
+                          // this.setState({
+                          //     status: 'error',
+                          //     })}}
+                              > 
+                          Reject
+                          </Button> 
+                               <Dialog
+                                  open={this.state.open2}
+                                  onClose={this.handleClose2}
+                                  aria-labelledby="form-dialog-title"
+                                    fullWidth= 'true'
+                                    maxWidth = 'sm'
+                              >
+                                  <DialogTitle id="form-dialog-title">
+                                  Please state the reason why it was rejected?        
+                                    </DialogTitle>
+                                  <DialogContent>
+                                    <div style={{ display: "flex" }}>
+                                      
+                                    </div>
+                                    <div>
+                                      <TextField
+                                        autoFocus
+                                        id="comment"
+                                        multiline
+                                        rows="4"
+                                        margin="dense"
+                                        variant="outlined"
+                                        fullWidth
+                                      />
+                                  </div>
+                                  </DialogContent>
+                                  <DialogActions>
+                                    <Button onClick={this.handleClose2} type="danger">
+                                      Cancel
+                                    </Button>
+                                    <Button onClick={() => {
+                                        this.setState({ 
+                                          open2: false,
+                                          status: 'error'
+                                           });
+                                       message.success('Rejected');
+                                    }} 
+                                    type="primary" 
+                                    color="primary"
+                                    >
+                                      Reject
+                                    </Button>
+                                  </DialogActions>
+                                </Dialog>
+
+                  </div>
                                 
                     )
                   }
