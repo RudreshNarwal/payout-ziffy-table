@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <h3 style={{ color: '#34495e', margin: '30px 0px 0px 30px'}}>Payout Process</h3>
+       {/* <h3 style={{ color: '#34495e', margin: '30px 0px 0px 30px'}}>Payout Process</h3> */}
         {/* adding cards */}  
         <Test/>
         
